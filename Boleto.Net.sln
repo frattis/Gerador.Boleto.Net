@@ -1,0 +1,50 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 11.00
+# Visual Studio 2010
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Biblioteca", "Biblioteca", "{75FC8289-5B1E-4684-8497-54494382FA55}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Form", "Form", "{75C4F877-9574-43BA-9844-EAEC221DC0FA}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Boleto.Net", "Boleto.Net\Boleto.Net.csproj", "{F173E80B-E36B-48AD-B483-A27F8CA86F3C}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Boleto.Net.UI", "Boleto.Net.Arquivo\Boleto.Net.UI.csproj", "{98AD1B9D-47F5-432C-85BD-49A12FBD7CAD}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|.NET = Debug|.NET
+		Debug|Any CPU = Debug|Any CPU
+		Debug|Mixed Platforms = Debug|Mixed Platforms
+		Release|.NET = Release|.NET
+		Release|Any CPU = Release|Any CPU
+		Release|Mixed Platforms = Release|Mixed Platforms
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{F173E80B-E36B-48AD-B483-A27F8CA86F3C}.Debug|.NET.ActiveCfg = Debug|Any CPU
+		{F173E80B-E36B-48AD-B483-A27F8CA86F3C}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{F173E80B-E36B-48AD-B483-A27F8CA86F3C}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{F173E80B-E36B-48AD-B483-A27F8CA86F3C}.Debug|Mixed Platforms.ActiveCfg = Debug|Any CPU
+		{F173E80B-E36B-48AD-B483-A27F8CA86F3C}.Debug|Mixed Platforms.Build.0 = Debug|Any CPU
+		{F173E80B-E36B-48AD-B483-A27F8CA86F3C}.Release|.NET.ActiveCfg = Release|Any CPU
+		{F173E80B-E36B-48AD-B483-A27F8CA86F3C}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{F173E80B-E36B-48AD-B483-A27F8CA86F3C}.Release|Any CPU.Build.0 = Release|Any CPU
+		{F173E80B-E36B-48AD-B483-A27F8CA86F3C}.Release|Mixed Platforms.ActiveCfg = Release|Any CPU
+		{F173E80B-E36B-48AD-B483-A27F8CA86F3C}.Release|Mixed Platforms.Build.0 = Release|Any CPU
+		{98AD1B9D-47F5-432C-85BD-49A12FBD7CAD}.Debug|.NET.ActiveCfg = Debug|Any CPU
+		{98AD1B9D-47F5-432C-85BD-49A12FBD7CAD}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{98AD1B9D-47F5-432C-85BD-49A12FBD7CAD}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{98AD1B9D-47F5-432C-85BD-49A12FBD7CAD}.Debug|Mixed Platforms.ActiveCfg = Debug|Any CPU
+		{98AD1B9D-47F5-432C-85BD-49A12FBD7CAD}.Debug|Mixed Platforms.Build.0 = Debug|Any CPU
+		{98AD1B9D-47F5-432C-85BD-49A12FBD7CAD}.Release|.NET.ActiveCfg = Release|Any CPU
+		{98AD1B9D-47F5-432C-85BD-49A12FBD7CAD}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{98AD1B9D-47F5-432C-85BD-49A12FBD7CAD}.Release|Any CPU.Build.0 = Release|Any CPU
+		{98AD1B9D-47F5-432C-85BD-49A12FBD7CAD}.Release|Mixed Platforms.ActiveCfg = Release|Any CPU
+		{98AD1B9D-47F5-432C-85BD-49A12FBD7CAD}.Release|Mixed Platforms.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(NestedProjects) = preSolution
+		{F173E80B-E36B-48AD-B483-A27F8CA86F3C} = {75FC8289-5B1E-4684-8497-54494382FA55}
+		{98AD1B9D-47F5-432C-85BD-49A12FBD7CAD} = {75C4F877-9574-43BA-9844-EAEC221DC0FA}
+	EndGlobalSection
+EndGlobal
