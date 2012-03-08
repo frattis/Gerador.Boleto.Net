@@ -2,23 +2,20 @@ using System;
 using System.IO;
 using System.Collections.Generic;
 using System.ComponentModel;
-using System.Data;
-using System.Drawing;
 using System.Text;
 using System.Windows.Forms;
-using System.Threading;
-using BoletoNet;
 using BoletoNet.Arquivo.Class;
+using BoletoNet.Arquivo.Properties;
 
 namespace BoletoNet.Arquivo
 {
     public partial class Main : Form
     {
         #region ImpressaoBoleto
-        private short _codigoBanco = 0;
+        private short _codigoBanco;
         private Progresso _progresso;
         string _arquivo = string.Empty;
-        private ImpressaoBoleto _impressaoBoleto = new ImpressaoBoleto();
+        private readonly ImpressaoBoleto _impressaoBoleto = new ImpressaoBoleto();
 
         public short CodigoBanco
         {
@@ -33,12 +30,12 @@ namespace BoletoNet.Arquivo
         #endregion
 
         #region GERA LAYOUT DO BOLETO
-        private void GeraLayout(List<BoletoBancario> boletos)
+        private void GeraLayout(IEnumerable<BoletoBancario> boletos)
         {
             try
             {
-                StringBuilder html = new StringBuilder();
-                foreach (BoletoBancario o in boletos)
+                var html = new StringBuilder();
+                foreach (var o in boletos)
                 {
                     html.Append(o.MontaHtml());
                     html.Append("</br></br></br></br></br></br></br></br></br></br>");
@@ -46,9 +43,9 @@ namespace BoletoNet.Arquivo
 
                 _arquivo = System.IO.Path.GetTempFileName();
 
-                using (FileStream f = new FileStream(_arquivo, FileMode.Create))
+                using (var f = new FileStream(_arquivo, FileMode.Create))
                 {
-                    StreamWriter w = new StreamWriter(f, System.Text.Encoding.Default);
+                    var w = new StreamWriter(f, System.Text.Encoding.Default);
                     w.Write(html.ToString());
                     w.Close();
                     f.Close();
@@ -113,9 +110,7 @@ namespace BoletoNet.Arquivo
 
 
                         DateTime vencimento = DateTime.Now;
-                        string datatextbox = VencimentoTextbox.Text.Replace(" ", "").Replace("/", "");
-                        DateTime vencimentodotextbox = Convert.ToDateTime(datatextbox);
-                        vencimento = vencimentodotextbox;
+                        vencimento = Convert.ToDateTime(VencimentoTextbox.Text);
                         DateTime _dia = DateTime.Now;
                         DateTime vencimentoem5dias = Convert.ToDateTime(_dia.AddDays(5).ToString("dd/MM/yyyy"));
 
@@ -660,7 +655,7 @@ namespace BoletoNet.Arquivo
         #endregion
 
         #region Eventos do BackgroundWorker
-        private void backgroundWorker_DoWork(object sender, DoWorkEventArgs e)
+        private void BackgroundWorkerDoWork(object sender, DoWorkEventArgs e)
         {
             try
             {
@@ -701,14 +696,14 @@ namespace BoletoNet.Arquivo
             }
             catch (Exception ex)
             {
-                MessageBox.Show(ex.Message, "Alerta de Erro", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                MessageBox.Show(ex.Message, Resources.Main_button1_Click_Alerta_de_Erro, MessageBoxButtons.OK, MessageBoxIcon.Error);
                 return;
             }
             
 
         }
 
-        private void backgroundWorker_RunWorkerCompleted(object sender, RunWorkerCompletedEventArgs e)
+        private void BackgroundWorkerRunWorkerCompleted(object sender, RunWorkerCompletedEventArgs e)
         {
             try
             {
@@ -744,7 +739,8 @@ namespace BoletoNet.Arquivo
             }
             catch (Exception ex)
             {
-                MessageBox.Show(ex.Message, "Alerta de Erro", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                MessageBox.Show(ex.Message, Resources.Main_button1_Click_Alerta_de_Erro, MessageBoxButtons.OK, MessageBoxIcon.Error);
+                return;
             }
 
         }
@@ -770,16 +766,17 @@ namespace BoletoNet.Arquivo
                 else if (radioButtonCaixa.Checked)
                     CodigoBanco = Convert.ToInt16(radioButtonCaixa.Tag);
 
-                BackgroundWorker backgroundWorker = new BackgroundWorker();
-                backgroundWorker.DoWork += new DoWorkEventHandler(backgroundWorker_DoWork);
-                backgroundWorker.RunWorkerCompleted += new RunWorkerCompletedEventHandler(backgroundWorker_RunWorkerCompleted);
+                var backgroundWorker = new BackgroundWorker();
+                backgroundWorker.DoWork += new DoWorkEventHandler(BackgroundWorkerDoWork);
+                backgroundWorker.RunWorkerCompleted += new RunWorkerCompletedEventHandler(BackgroundWorkerRunWorkerCompleted);
                 backgroundWorker.RunWorkerAsync();
                 _progresso = new Progresso();
                 _progresso.ShowDialog();
             }
             catch (Exception ex)
             {
-                MessageBox.Show(ex.Message , "Alerta de Erro", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                MessageBox.Show(ex.Message , Resources.Main_button1_Click_Alerta_de_Erro, MessageBoxButtons.OK, MessageBoxIcon.Error);
+                return;
             }
             
         }
